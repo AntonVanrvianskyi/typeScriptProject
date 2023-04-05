@@ -8,6 +8,13 @@ interface ICores {
 
     }
 }
+interface IPayload{
+
+    payload_type: string,
+    payload_mass_kg: number,
+    payload_mass_lbs: number
+
+}
 interface IUser {
     mission_name: string,
     launch_date_local: string,
@@ -24,13 +31,8 @@ interface IUser {
         cores: ICores[]
     },
     second_stage: {
-        payloads: [
-            {
-                payload_type: string,
-                payload_mass_kg: number,
-                payload_mass_lbs: number
-            }
-        ]
+        payloads: IPayload[]
+
     }
 }
 }
@@ -46,14 +48,14 @@ interface IUser {
 const user: IMan = {name:'Max', age:13, gender: 'male'}
 
 
-function sum(a:number,b:number){
+function sum(a:number,b:number):number{
     return a+b
 }
-function showSum(a:number,b:number){
+function showSum(a:number,b:number):void{
     console.log(a + b);
 }
 
-function incAge(someUser:IMan, inc:number){
+function incAge(someUser:IMan, inc:number):IMan{
     someUser.age+=inc
     return someUser
 }
